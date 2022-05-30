@@ -9,6 +9,8 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { ContentsComponent } from './contents/contents.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PromisesComponent } from './promises/promises.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     HeaderComponent,
     ContentsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PromisesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule
   ],
   providers: [],

@@ -1,4 +1,5 @@
-<div class="content">
-    <p>contents works!</p>
-</div>
-
+<mat-card *ngFor="let movie of movies">
+    <mat-card-title>{{movie.title}}</mat-card-title>
+    <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
+    <mat-card-content>{{movie.rating}}</mat-card-content>
+</mat-card>
