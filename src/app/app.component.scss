@@ -3,12 +3,8 @@ app-header {
 }
 
 .content {
-    grid-area: content;
 
-    // display: grid;
-    // grid-gap: 10px;
-    // grid-template-columns: none;
-    // grid-template-areas: none;
+    grid-area: content;
 }
 
 .wrapper {
@@ -23,9 +19,3 @@ app-header {
     background-color: #fff;
     color: #444;
 }
-
-@media screen and (max-width: 600px) {
-    .wrapper {
-      background-color: olive;
-    }
-  }
