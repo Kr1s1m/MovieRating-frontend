@@ -1,5 +1,9 @@
-<mat-card *ngFor="let movie of movies">
+<mat-card class = "movie-card" *ngFor="let movie of movies">
+    
+    <img mat-card-image src="https://media.comicbook.com/2021/08/dune-movie-1278601.jpeg?auto=webp&width=544&height=680&crop=544:680,smart" alt="">
+
+    <mat-card-content>{{movie.rating}}</mat-card-content>
     <mat-card-title>{{movie.title}}</mat-card-title>
     <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
-    <mat-card-content>{{movie.rating}}</mat-card-content>
+    
 </mat-card>
