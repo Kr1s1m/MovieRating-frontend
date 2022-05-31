@@ -1,4 +1,10 @@
-.content {
-    background-color: aqua;
-    height: 100%;
+app-contents{
+    
+    display: flex;
+
+    flex-flow: row wrap;
+
+    justify-content: left;
+
+    margin: 20px;    
 }
