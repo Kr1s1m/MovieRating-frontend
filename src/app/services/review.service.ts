@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Movie } from './movie';
+import { Review } from '../reviews/review';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PostService {
+export class ReviewService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllMovies() {
-    return this.httpClient.get<Movie[]>(environment.apiBackendPoint + '/api/v1/movies').toPromise();
+  getAllReviewsByMovieId(movie_id: number) {
+    return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id).toPromise();
   }
-
 }

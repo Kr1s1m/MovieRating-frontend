@@ -1,0 +1,5 @@
+<mat-card class="review-card" *ngFor="let review of reviews">
+    <mat-card-title>{{review.score}}</mat-card-title>
+    <mat-card-subtitle>{{review.reviewerName}}</mat-card-subtitle>
+    <mat-card-content>{{review.body}}</mat-card-content>
+</mat-card>
