@@ -15,4 +15,7 @@ export class PostService {
     return this.httpClient.get<Movie[]>(environment.apiBackendPoint + '/api/v1/movies').toPromise();
   }
 
+  getMovieById(id: number){
+    return this.httpClient.get<Movie>(environment.apiBackendPoint + '/api/v1/movies/' + id).toPromise();
+  }
 }

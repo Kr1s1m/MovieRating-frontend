@@ -1,12 +1,24 @@
-<mat-card class="movie-card-large">
-    <mat-card-title class="movie-title">Movie title</mat-card-title>
-    <mat-card-title class="movie-rating">Movie rating</mat-card-title>
-    <mat-card-title class="movie-votes">Movie votes</mat-card-title>
-    <mat-card-title class="movie-year">Movie year</mat-card-title>
-    <img mat-card-image class="movie-poster" src="https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg">
-    <mat-card-content class="movie-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mat-card-content>
-</mat-card>
+<div *ngIf="(movie$ | async) as movie; else movie_not_found">
+    <mat-card class="movie-card-large">
+        <mat-card-title class="movie-title">{{movie.title}}</mat-card-title>
+        <mat-card-title class="movie-rating">{{movie.rating}}</mat-card-title>
+        <mat-card-title class="movie-votes">{{movie.reviewcount}}</mat-card-title>
+        <mat-card-title class="movie-year">{{movie.year}}</mat-card-title>
+        <img mat-card-image class="movie-poster"
+            src="https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg">
+        <mat-card-content class="movie-description">{{movie.description}}</mat-card-content>
+    </mat-card>
 
-<div *ngIf="(reviews$ | async) as reviews">
-    <app-reviews [reviews]="reviews"></app-reviews>
+    <div *ngIf="(reviews$ | async) as reviews">
+        <div *ngIf="reviews.length != 0; else no_reviews">
+            <app-reviews [reviews]="reviews"></app-reviews>
+        </div>
+        <ng-template #no_reviews>
+            No reviews.
+        </ng-template>
+    </div>
 </div>
+
+<ng-template #movie_not_found>
+    Movie not found.
+</ng-template>
