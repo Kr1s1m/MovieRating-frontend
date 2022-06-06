@@ -9,6 +9,8 @@
         <mat-card-content class="movie-description">{{movie.description}}</mat-card-content>
     </mat-card>
 
+    <app-review-form [movieId]="id"></app-review-form>
+
     <div *ngIf="(reviews$ | async) as reviews">
         <div *ngIf="reviews.length != 0; else no_reviews">
             <app-reviews [reviews]="reviews"></app-reviews>
