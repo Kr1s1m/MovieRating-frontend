@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
-import { ContentsComponent } from './contents/contents.component';
+import { HomeContentsComponent } from './home-contents/home-contents.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MoviePageComponent } from './movie-page/movie-page.component';
@@ -18,7 +18,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    ContentsComponent,
+    HomeContentsComponent,
     NotFoundComponent,
     MoviePageComponent,
     ReviewsComponent

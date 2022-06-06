@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../services/movie';
-import { PostService } from '../services/post.service';
+import { Movie } from '../types/movie';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,10 @@ export class HomeComponent implements OnInit {
   // @ts-ignore
   movies$: Promise<Movie[] | undefined>;
 
-  constructor(private postService: PostService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.movies$ = this.postService.getAllMovies();
+    this.movies$ = this.movieService.getAllMovies();
   }
 
 }

@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Movie } from './movie';
+import { Movie } from '../types/movie';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PostService {
+export class MovieService {
 
   constructor(private httpClient: HttpClient) { }
 
