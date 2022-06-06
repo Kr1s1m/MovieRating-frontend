@@ -14,4 +14,8 @@ export class ReviewService {
   getAllReviewsByMovieId(movie_id: number) {
     return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id).toPromise();
   }
+
+  createReview(review: Review) {
+    return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review).toPromise();
+  }
 }

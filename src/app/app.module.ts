@@ -12,6 +12,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MoviePageComponent } from './movie-page/movie-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { ReviewsComponent } from './reviews/reviews.component';
     HomeContentsComponent,
     NotFoundComponent,
     MoviePageComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    ReviewFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
