@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from '../types/review';
-import { FormBuilder } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ReviewService } from '../services/review.service';
 
 @Component({
@@ -17,21 +17,22 @@ export class ReviewFormComponent implements OnInit {
   //@ts-ignore
   review: Review;
 
-  reviewForm = this.formBuilder.group({
-    title:'',
-    score:5,
-    body:'',
-    name:''
-  });
-
-  constructor(private formBuilder: FormBuilder,
-              private reviewService: ReviewService) { }
+  constructor(private reviewService: ReviewService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  onSubmit(reviewForm: NgForm): void {
 
-    console.log('submitted');
+    this.review = new Review(
+      this.movieId,
+      reviewForm.value.title,
+      reviewForm.value.reviewerName, 
+      reviewForm.value.score,
+      reviewForm.value.body);
+
+    this.reviewService.createReview(this.review);
+
+    window.location.reload();
   }
 }

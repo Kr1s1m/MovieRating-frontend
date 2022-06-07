@@ -1,33 +1,22 @@
-<form class="review-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="review-title" appearance="fill">
-        <mat-label>Title</mat-label>
-        <input  matInput id="title" type="text" formControlName="title" required placeholder="Ex. Recommended!">
+<form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+
+    <mat-form-field class="review-title">
+        <input name="title" ngModel required #title="ngModel">
     </mat-form-field>
 
-    <mat-form-field class="reviewer-name" appearance="fill">
-        <mat-select id="score" type="number" formControlName="score" placeholder="Rating">
-            <mat-option value="one">1</mat-option>
-            <mat-option value="two">2</mat-option>
-            <mat-option value="three">3</mat-option>
-            <mat-option value="four">4</mat-option>
-            <mat-option value="five">5</mat-option>
-            <mat-option value="six">6</mat-option>
-            <mat-option value="seven">7</mat-option>
-            <mat-option value="eight">8</mat-option>
-            <mat-option value="nine">9</mat-option>
-            <mat-option value="ten">10</mat-option>
-        </mat-select>
+    <mat-form-field class="review-score">
+        <input name="score" ngModel #score="ngModel">
     </mat-form-field>
-       
-    <mat-form-field class="review-body" appearance="fill">
-        <mat-label>Leave a comment</mat-label>
-        <textarea id="body" type="text" formControlName="body" matInput required placeholder="I feel like this movie..."></textarea>
+    
+    <mat-form-field class="review-body">
+        <textarea  name="body" ngModel required #body="ngModel">
+        </textarea>
     </mat-form-field>
 
-    <mat-form-field class="reviewer-name" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input id="name" type="text" formControlName="name" matInput placeholder="enter your name" value="Anonymous" >
+    <mat-form-field class="review-reviewerName">
+        <input name="reviewerName" ngModel #reviewerName="ngModel">
     </mat-form-field>
 
-    <button type="submit" mat-raised-button>Submit</button>
+    <button mat-raised-button>Submit</button>
 </form>
+
