@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, flatMap, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Review } from '../types/review';
 
@@ -9,13 +10,32 @@ import { Review } from '../types/review';
 
 export class ReviewService {
 
+  reviews$: BehaviorSubject<Review[]> = new BehaviorSubject<Review[]>([]);
+
   constructor(private httpClient: HttpClient) { }
 
   getAllReviewsByMovieId(movie_id: number) {
-    return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id).toPromise();
+    return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id)
+    .pipe(
+      tap((reviews: Review[]) => {this.reviews$.next(reviews);})
+    );
+  }
+
+  getAllReviewsByMovieIdPromise(movie_id: number) {
+    return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id)
+    .pipe(
+      tap((reviews: Review[]) => {this.reviews$.next(reviews);})
+    ).toPromise();
   }
 
   createReview(review: Review) {
-    return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review).toPromise();
+    return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review)
+    .pipe(
+      flatMap(() => this.getAllReviewsByMovieId(review.movieId))
+    ).toPromise();
+  }
+
+  getReviewsFromApplcationState() {
+    return this.reviews$.asObservable();
   }
 }
