@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Review } from '../types/review';
 import { NgForm } from '@angular/forms';
 import { ReviewService } from '../services/review.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-review-form',
@@ -17,6 +18,10 @@ export class ReviewFormComponent implements OnInit {
   //@ts-ignore
   review: Review;
 
+  @Output()
+  submitEmitter: EventEmitter<Review> = new EventEmitter();
+
+
   constructor(private reviewService: ReviewService) { }
 
   ngOnInit(): void {
@@ -31,8 +36,6 @@ export class ReviewFormComponent implements OnInit {
       reviewForm.value.score,
       reviewForm.value.body);
 
-    this.reviewService.createReview(this.review);
-
-    window.location.reload();
+    this.submitEmitter.emit(this.review);
   }
 }
