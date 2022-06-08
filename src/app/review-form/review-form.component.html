@@ -1,20 +1,20 @@
-<form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+<form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)" ngNativeValidate>
 
-    <mat-form-field class="review-title">
-        <input name="title" ngModel required #title="ngModel">
+    <mat-form-field class="review-title" appearance="fill">
+        <input matInput name="title" ngModel required #title="ngModel">
     </mat-form-field>
 
-    <mat-form-field class="review-score">
-        <input name="score" ngModel #score="ngModel">
+    <mat-form-field class="review-score" appearance="fill">
+        <input matInput name="score" ngModel #score="ngModel">
     </mat-form-field>
     
-    <mat-form-field class="review-body">
-        <textarea  name="body" ngModel required #body="ngModel">
+    <mat-form-field class="review-body" appearance="fill">
+        <textarea matInput  name="body" ngModel required #body="ngModel">
         </textarea>
     </mat-form-field>
 
-    <mat-form-field class="review-reviewerName">
-        <input name="reviewerName" ngModel #reviewerName="ngModel">
+    <mat-form-field class="review-reviewerName" appearance="fill">
+        <input matInput name="reviewerName" ngModel #reviewerName="ngModel">
     </mat-form-field>
 
     <button mat-raised-button>Submit</button>
