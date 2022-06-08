@@ -23,14 +23,14 @@ export class MoviePageComponent implements OnInit, OnDestroy {
   reviews$: Promise<Review[] | undefined>; //for the loadReviewsByMovieId()
 
   constructor(private reviewService: ReviewService,
-              private postService: MovieService,
+              private movieService: MovieService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params =>
-      {this.id =+params['id'];})
+      {this.id =+params['id'];});
 
-    this.movie$ = this.postService.getMovieById(this.id);
+    this.movie$ = this.movieService.getMovieById(this.id);
     this.reviews$ = this.reviewService.getAllReviewsByMovieId(this.id);
   }
 
