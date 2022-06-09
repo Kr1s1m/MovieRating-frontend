@@ -14,6 +14,7 @@ import { MoviePageComponent } from './movie-page/movie-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { FormsModule } from '@angular/forms';
+import { IndividualsComponent } from './individuals/individuals.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     NotFoundComponent,
     MoviePageComponent,
     ReviewsComponent,
-    ReviewFormComponent
+    ReviewFormComponent,
+    IndividualsComponent
   ],
   imports: [
     BrowserModule,

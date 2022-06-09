@@ -9,6 +9,12 @@
         <mat-card-content class="movie-description">{{movie.description}}</mat-card-content>
     </mat-card>
 
+    <h1> Individuals </h1>
+
+    <div *ngIf="(individuals$ | async) as individuals">
+        <app-individuals [individuals]="individuals"></app-individuals>
+    </div>
+
     <h1> Reviews </h1>
 
     <div *ngIf="(reviews$ | async) as reviews">
