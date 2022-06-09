@@ -3,7 +3,7 @@ import { ReviewService } from '../services/review.service';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../types/movie';
 import { MovieService } from '../services/movie.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Review } from '../types/review';
 
 @Component({
@@ -19,7 +19,7 @@ export class MoviePageComponent implements OnInit, OnDestroy {
 
 
   //@ts-ignore
-  movie$: Promise<Movie | undefined>;
+  movie$: Observable<Movie>;
 
   // @ts-ignore
   reviews$: Observable<Review[]>;
@@ -37,9 +37,19 @@ export class MoviePageComponent implements OnInit, OnDestroy {
     this.reviews$ = this.reviewService.getAllReviewsByMovieId(this.id);
   }
 
-  onReviewSubmit($event: Review) {
-    this.reviewService.createReview($event);
+
+  async update($event: Review) {
+    
+    await this.reviewService.createReview($event);
+    await this.movieService.getMovieByIdAsPromise(this.id);
+
     this.reviews$ = this.reviewService.getReviewsFromApplcationState();
+    this.movie$ = this.movieService.getMovieFromApplicationState(); 
+  }
+
+  onReviewSubmit($event: Review) {
+
+    this.update($event);
   }
 
   ngOnDestroy() {
