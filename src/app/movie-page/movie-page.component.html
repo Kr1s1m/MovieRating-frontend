@@ -9,7 +9,7 @@
         <mat-card-content class="movie-description">{{movie.description}}</mat-card-content>
     </mat-card>
 
-    <app-review-form (submitEmitter)="onReviewSubmit($event)"  [movieId]="id"></app-review-form>
+    <h1> Reviews </h1>
 
     <div *ngIf="(reviews$ | async) as reviews">
         <div *ngIf="reviews.length != 0; else no_reviews">
@@ -19,6 +19,11 @@
             No reviews.
         </ng-template>
     </div>
+
+    <h1> Leave a review </h1>
+
+    <app-review-form (submitEmitter)="onReviewSubmit($event)"  [movieId]="id"></app-review-form>
+
 </div>
 
 <ng-template #movie_not_found>

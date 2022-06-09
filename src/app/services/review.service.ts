@@ -21,13 +21,6 @@ export class ReviewService {
     );
   }
 
-  getAllReviewsByMovieIdPromise(movie_id: number) {
-    return this.httpClient.get<Review[]>(environment.apiBackendPoint + '/api/v1/reviews/' + movie_id)
-    .pipe(
-      tap((reviews: Review[]) => {this.reviews$.next(reviews);})
-    ).toPromise();
-  }
-
   createReview(review: Review) {
     return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review)
     .pipe(
