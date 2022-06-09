@@ -5,6 +5,8 @@ import { Movie } from '../types/movie';
 import { MovieService } from '../services/movie.service';
 import { Observable, tap } from 'rxjs';
 import { Review } from '../types/review';
+import { Individual } from '../types/individual';
+import { IndividualService } from '../services/individual.service';
 
 @Component({
   selector: 'app-movie-page',
@@ -24,8 +26,12 @@ export class MoviePageComponent implements OnInit, OnDestroy {
   // @ts-ignore
   reviews$: Observable<Review[]>;
 
-  constructor(private reviewService: ReviewService,
-              private movieService: MovieService,
+  // @ts-ignore
+  individuals$: Promise<Individual[] | undefined>;
+
+  constructor(private movieService: MovieService,
+              private reviewService: ReviewService,
+              private individualService: IndividualService,
               private route: ActivatedRoute) { }
 
 
@@ -35,6 +41,7 @@ export class MoviePageComponent implements OnInit, OnDestroy {
 
     this.movie$ = this.movieService.getMovieById(this.id);
     this.reviews$ = this.reviewService.getAllReviewsByMovieId(this.id);
+    this.individuals$ = this.individualService.getIndividualsByMovieId(this.id);
   }
 
 
