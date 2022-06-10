@@ -1,4 +1,8 @@
 <mat-card class="individual-card" *ngFor="let individual of individuals">
-    <mat-card-title>{{individual.firstname}} {{individual.lastname}}</mat-card-title>
+    <mat-card-title>
+        <a [routerLink]="['/individuals/', individual.id]">
+        {{individual.firstname}} {{individual.lastname}}
+        </a>
+    </mat-card-title>
     <mat-card-subtitle>{{individual.starType}}</mat-card-subtitle>
 </mat-card>

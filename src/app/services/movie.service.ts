@@ -18,7 +18,6 @@ export class MovieService {
     return this.httpClient.get<Movie[]>(environment.apiBackendPoint + '/api/v1/movies').toPromise();
   }
 
-
   getMovieById(id: number){
     return this.httpClient.get<Movie>(environment.apiBackendPoint + '/api/v1/movies/' + id)
       .pipe(
@@ -31,6 +30,12 @@ export class MovieService {
       .pipe(
         tap((movie: Movie) => { this.movie$.next(movie); })
       ).toPromise();
+  }
+
+  getMoviesByIndividualId(individual_id: number){
+    return this.httpClient
+    .get<Movie[]>(environment.apiBackendPoint + '/api/v1/movies/individual-page/' + individual_id)
+    .toPromise();
   }
 
   getMovieFromApplicationState()

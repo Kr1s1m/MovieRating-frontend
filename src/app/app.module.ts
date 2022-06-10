@@ -15,6 +15,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { FormsModule } from '@angular/forms';
 import { IndividualsComponent } from './individuals/individuals.component';
+import { IndividualPageComponent } from './individual-page/individual-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IndividualsComponent } from './individuals/individuals.component';
     MoviePageComponent,
     ReviewsComponent,
     ReviewFormComponent,
-    IndividualsComponent
+    IndividualsComponent,
+    IndividualPageComponent
   ],
   imports: [
     BrowserModule,
