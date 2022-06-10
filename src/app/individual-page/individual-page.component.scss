@@ -1,0 +1,15 @@
+.individual-photo{
+    width: 25%;
+    height: 25%;
+}
+
+app-contents{
+    
+    display: flex;
+
+    flex-flow: row wrap;
+
+    justify-content: left;
+
+    margin: 20px;    
+}

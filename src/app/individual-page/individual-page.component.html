@@ -1,0 +1,19 @@
+<div *ngIf="(individual$ | async) as individual; else individual_not_found">
+    <mat-card class="individual-card-large">
+        <mat-card-title class="inidivual-names">{{individual.firstname}} {{individual.lastname}}</mat-card-title>
+        <img mat-card-image class="individual-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Keanu_Reeves_2013_%2810615146086%29_%28cropped%29.jpg/440px-Keanu_Reeves_2013_%2810615146086%29_%28cropped%29.jpg">
+        <mat-card-content class="indiviudal-bio">{{individual.bio}}</mat-card-content>
+    </mat-card>
+
+    <h1> Movies </h1>
+
+    <div *ngIf="(movies$ | async) as movies">
+        <app-contents [movies]="movies"></app-contents>
+    </div>
+
+</div>
+
+<ng-template #individual_not_found>
+    Individual not found.
+</ng-template>
