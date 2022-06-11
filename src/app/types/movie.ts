@@ -7,9 +7,9 @@ export class Movie {
     rating: number;
     description: string;
 
-    constructor(title: string = "", year: number = 0, starType: string = "Default", votes: number = 0, rating: number = 0, description: string = "")
+    constructor(id: number = 0, title: string = "", year: number = 0, starType: string = "Default", votes: number = 0, rating: number = 0, description: string = "")
     {
-        this.id = 0;
+        this.id = id;
         this.title = title;
         this.year = year;
         this.starType = starType;
@@ -17,8 +17,4 @@ export class Movie {
         this.rating = rating;
         this.description = description;
     }
-
-   
-
-
 }

@@ -37,5 +37,7 @@ export class ReviewFormComponent implements OnInit {
       reviewForm.value.body);
 
     this.submitEmitter.emit(this.review);
+
+    reviewForm.resetForm();
   }
 }

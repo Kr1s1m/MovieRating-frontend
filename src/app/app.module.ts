@@ -16,6 +16,7 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 import { FormsModule } from '@angular/forms';
 import { IndividualsComponent } from './individuals/individuals.component';
 import { IndividualPageComponent } from './individual-page/individual-page.component';
+import { IndividualMoviesComponent } from './individual-movies/individual-movies.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IndividualPageComponent } from './individual-page/individual-page.compo
     ReviewsComponent,
     ReviewFormComponent,
     IndividualsComponent,
-    IndividualPageComponent
+    IndividualPageComponent,
+    IndividualMoviesComponent
   ],
   imports: [
     BrowserModule,
