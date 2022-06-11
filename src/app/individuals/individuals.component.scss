@@ -1,4 +1,20 @@
+.group-content {
+    display: flex;
+
+    flex-flow: row wrap;
+
+    justify-content: left;
+
+    margin: 20px; 
+}
+
+.individual-photo {
+    width: 182px;
+    height: 140px;
+}
+
 .individual-card{
+
     background: rgb(143, 229, 237);
     width: 150px;
     height: 180px;

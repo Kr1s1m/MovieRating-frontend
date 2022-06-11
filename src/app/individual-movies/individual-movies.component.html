@@ -1,0 +1,14 @@
+<mat-card class="movie-card" *ngFor="let movie of groupedMovies | keyvalue">
+    <img mat-card-image
+        src="https://media.comicbook.com/2021/08/dune-movie-1278601.jpeg?auto=webp&width=544&height=680&crop=544:680,smart"
+        alt="">
+
+    <mat-card-content>{{$any(movie.value).rating}}</mat-card-content>
+    <a [routerLink]="['/movies/', $any(movie.value).id]">
+        <mat-card-title>{{$any(movie.value).title}}</mat-card-title>
+    </a>
+
+    <mat-card-subtitle>{{$any(movie.value).year}}</mat-card-subtitle>
+    <mat-card-subtitle>{{$any(movie.value).starType}}</mat-card-subtitle>
+
+</mat-card>

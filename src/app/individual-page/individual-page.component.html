@@ -9,7 +9,7 @@
     <h1> Movies </h1>
 
     <div *ngIf="(movies$ | async) as movies">
-        <app-contents [movies]="movies"></app-contents>
+        <app-individual-movies [movies]="movies"></app-individual-movies>
     </div>
 
 </div>
