@@ -9,7 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeContentsComponent } from './home-contents/home-contents.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MoviePageComponent } from './movie-page/movie-page.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { IndividualsComponent } from './individuals/individuals.component';
 import { IndividualPageComponent } from './individual-page/individual-page.component';
 import { IndividualMoviesComponent } from './individual-movies/individual-movies.component';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { IndividualMoviesComponent } from './individual-movies/individual-movies
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    BarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
