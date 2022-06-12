@@ -18,6 +18,8 @@ export class ReviewFormComponent implements OnInit {
   //@ts-ignore
   review: Review;
 
+  defaultScore = 0;
+
   @Output()
   submitEmitter: EventEmitter<Review> = new EventEmitter();
 

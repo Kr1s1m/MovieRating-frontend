@@ -9,6 +9,13 @@
         <mat-label>Rating</mat-label>
         <input matInput name="score" ngModel #score="ngModel">
     </mat-form-field>
+
+    <div class="card card-success">
+        <div class="card-heading">Star Rating</div>
+        <div class="card-body">
+          <bar-rating [(rate)]="defaultScore" [max]="10" [theme]="'stars'"></bar-rating>
+        </div>
+      </div>
     
     <mat-form-field class="review-body" appearance="fill">
         <mat-label>Leave a review</mat-label>
@@ -23,4 +30,6 @@
 
     <button mat-raised-button>Submit</button>
 </form>
+
+
 
