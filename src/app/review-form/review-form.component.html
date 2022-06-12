@@ -5,17 +5,14 @@
         <input matInput name="title" ngModel required #title="ngModel">
     </mat-form-field>
 
-    <mat-form-field class="review-score" appearance="fill">
-        <mat-label>Rating</mat-label>
-        <input matInput name="score" ngModel #score="ngModel">
-    </mat-form-field>
-
-    <div class="card card-success">
-        <div class="card-heading">Star Rating</div>
+    <div class="review-score">
+        <div class="card-heading">Star Rating (Optional)</div>
         <div class="card-body">
-          <bar-rating [(rate)]="defaultScore" [max]="10" [theme]="'stars'"></bar-rating>
+          <bar-rating name="score" ngModel #score="ngModel" [(rate)]="currentScore" [max]="10" [theme]="'stars'"></bar-rating>
         </div>
-      </div>
+    </div>
+
+   <button type="button" class="clear-score-button" (click)="clearCurrentScore();">Don't leave rating</button>
     
     <mat-form-field class="review-body" appearance="fill">
         <mat-label>Leave a review</mat-label>
@@ -24,11 +21,11 @@
     </mat-form-field>
 
     <mat-form-field class="review-reviewerName" appearance="fill">
-        <mat-label>Enter name</mat-label>
+        <mat-label>Enter name (Optional)</mat-label>
         <input matInput name="reviewerName" ngModel #reviewerName="ngModel">
     </mat-form-field>
 
-    <button mat-raised-button>Submit</button>
+    <button type="submit" class="submit-button">Submit</button>
 </form>
 
 

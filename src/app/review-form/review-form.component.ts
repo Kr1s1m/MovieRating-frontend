@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Review } from '../types/review';
 import { NgForm } from '@angular/forms';
-import { ReviewService } from '../services/review.service';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -18,15 +17,19 @@ export class ReviewFormComponent implements OnInit {
   //@ts-ignore
   review: Review;
 
-  defaultScore = 0;
+  currentScore: number | null = null;
 
   @Output()
   submitEmitter: EventEmitter<Review> = new EventEmitter();
 
 
-  constructor(private reviewService: ReviewService) { }
+  constructor() { }
 
   ngOnInit(): void {
+  }
+
+  clearCurrentScore() {
+    this.currentScore = null;
   }
 
   onSubmit(reviewForm: NgForm): void {
