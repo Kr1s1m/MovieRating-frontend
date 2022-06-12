@@ -109,5 +109,7 @@
       }
     }
   },
-  "defaultProject": "MovieRating-frontend"
+  "cli": {
+    "analytics": false
+  }
 }
