@@ -1,8 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, flatMap, tap } from 'rxjs';
+import { BehaviorSubject, flatMap, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Review } from '../types/review';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +25,11 @@ export class ReviewService {
     );
   }
 
-  createReview(review: Review) {
-    return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review)
+  createReview(review: Review) : Observable<any> {
+    return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review, httpOptions)
     .pipe(
       flatMap(() => this.getAllReviewsByMovieId(review.movieId))
-    ).toPromise();
+    );
   }
 
   getReviewsFromApplcationState() {

@@ -18,6 +18,10 @@ import { IndividualsComponent } from './individuals/individuals.component';
 import { IndividualPageComponent } from './individual-page/individual-page.component';
 import { IndividualMoviesComponent } from './individual-movies/individual-movies.component';
 import { BarRatingModule } from "ngx-bar-rating";
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { BarRatingModule } from "ngx-bar-rating";
     ReviewFormComponent,
     IndividualsComponent,
     IndividualPageComponent,
-    IndividualMoviesComponent
+    IndividualMoviesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,7 @@ import { BarRatingModule } from "ngx-bar-rating";
     FormsModule,
     BarRatingModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

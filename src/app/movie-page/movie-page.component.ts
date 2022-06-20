@@ -29,6 +29,10 @@ export class MoviePageComponent implements OnInit, OnDestroy {
   // @ts-ignore
   individuals$: Promise<Individual[] | undefined>;
 
+  reviewSubmitError = '';
+  isFailedSubmit = false;
+  isSuccessfulSubmit = false;
+
   constructor(private movieService: MovieService,
               private reviewService: ReviewService,
               private individualService: IndividualService,
@@ -47,7 +51,17 @@ export class MoviePageComponent implements OnInit, OnDestroy {
 
   async update($event: Review) {
     
-    await this.reviewService.createReview($event);
+    await this.reviewService.createReview($event).subscribe(
+      data => {
+        this.isSuccessfulSubmit = true;
+        console.log(data);
+      },
+      err =>{
+        this.reviewSubmitError = err.error.message;
+        this.isFailedSubmit = true;
+        console.log(this.reviewSubmitError);
+      }
+    );
     await this.movieService.getMovieByIdAsPromise(this.id);
 
     this.reviews$ = this.reviewService.getReviewsFromApplcationState();
