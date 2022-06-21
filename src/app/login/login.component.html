@@ -35,6 +35,7 @@
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ username }}. <br>
       Roles: {{ roles }}. <br>
+      <button type="button" [routerLink]="['/accounts/', accountId]">My Profile</button>
       <button type="button" (click)="logout();">Log out</button>
     </div>
   </div>

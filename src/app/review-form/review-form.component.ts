@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Review } from '../types/review';
 import { NgForm } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-review-form',
@@ -19,13 +20,19 @@ export class ReviewFormComponent implements OnInit {
 
   currentScore: number | null = null;
 
+  loggedIn = false;
+
   @Output()
   submitEmitter: EventEmitter<Review> = new EventEmitter();
 
 
-  constructor() { }
+  constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    if(this.tokenStorageService.getToken())
+    {
+      this.loggedIn = true;
+    }
   }
 
   clearCurrentScore() {
@@ -36,8 +43,9 @@ export class ReviewFormComponent implements OnInit {
 
     this.review = new Review(
       this.movieId,
+      this.tokenStorageService.getAccount().id,
+      this.tokenStorageService.getAccount().username, 
       reviewForm.value.title,
-      reviewForm.value.reviewerName || "Anonymous", 
       reviewForm.value.score,
       reviewForm.value.body);
 

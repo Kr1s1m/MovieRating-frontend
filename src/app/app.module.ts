@@ -21,6 +21,7 @@ import { BarRatingModule } from "ngx-bar-rating";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     IndividualPageComponent,
     IndividualMoviesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
