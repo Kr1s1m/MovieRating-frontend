@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { ReviewService } from '../services/review.service';
+import { TokenStorageService } from '../services/token-storage.service';
 import { Review } from '../types/review';
 
 @Component({
@@ -11,9 +14,26 @@ export class ReviewsComponent implements OnInit {
   @Input()
   reviews: Review[] = [];
 
-  constructor() { }
+  //@ts-ignore
+  isAdminLogged = false;
+  roles: string[] = [];
+
+  @Output()
+  deleteEmitter: EventEmitter<Review> = new EventEmitter();
+
+  constructor(private tokenStorageService: TokenStorageService,
+              private reviewService: ReviewService) { }
 
   ngOnInit(): void {
+    this.roles = this.tokenStorageService.getAccount().roles;
+    if(this.roles.includes('Admin'))
+    {
+      this.isAdminLogged = true;
+    }
+  }
+
+  onDelete(review: Review) {
+    this.deleteEmitter.emit(review);
   }
 
 }

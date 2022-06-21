@@ -45,8 +45,7 @@ export class MoviePageComponent implements OnInit, OnDestroy {
     this.individuals$ = this.individualService.getIndividualsByMovieId(this.id);
   }
 
-
-  async update($event: Review) {
+  async updateCreate($event: Review) {
     
     await this.reviewService.createReview($event);
     await this.movieService.getMovieByIdAsPromise(this.id);
@@ -55,9 +54,22 @@ export class MoviePageComponent implements OnInit, OnDestroy {
     this.movie$ = this.movieService.getMovieFromApplicationState(); 
   }
 
+  async updateDelete($event: Review) {
+    
+    await this.reviewService.deleteReview($event);
+    await this.movieService.getMovieByIdAsPromise(this.id);
+
+    this.reviews$ = this.reviewService.getReviewsFromApplcationState();
+    this.movie$ = this.movieService.getMovieFromApplicationState(); 
+  }
+
   onReviewSubmit($event: Review) {
 
-    this.update($event);
+    this.updateCreate($event);
+  }
+
+  onReviewDelete($event: Review){
+    this.updateDelete($event);
   }
 
   ngOnDestroy() {

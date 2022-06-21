@@ -13,6 +13,9 @@
 
                 <mat-card-title>{{review.title}}</mat-card-title>
                 <mat-card-subtitle>{{review.score}}</mat-card-subtitle>
+                <a [routerLink]="['/movies/', review.movieId]">
+                    {{review.movieTitle}} ({{review.movieYear}})
+                </a>
                 <mat-card-content>{{review.body}}</mat-card-content>
                 <mat-card-footer>{{review.date}}</mat-card-footer>
                 

@@ -21,7 +21,7 @@
             [(ngModel)]="form.username"
             required
             minlength="3"
-            maxlength="20"
+            maxlength="25"
             #username="ngModel"
           />
           <div class="alert-danger" *ngIf="f.submitted && username.invalid">
@@ -30,7 +30,7 @@
               Username must be at least 3 characters
             </div>
             <div *ngIf="username.errors?.['maxlength']">
-              Username must be at most 20 characters
+              Username must be at most 25 characters
             </div>
           </div>
         </div>
@@ -98,7 +98,8 @@
       </form>
   
       <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
+        Your registration is successful! <br>
+        Please check your email to activate your account.
       </div>
     </div>
   </div>

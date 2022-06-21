@@ -38,6 +38,14 @@ export class ReviewService {
     ).toPromise();
   }
 
+  deleteReview(review: Review) {
+    return this.httpClient.delete(environment.apiBackendPoint + '/api/v1/reviews/' + review.id, httpOptions)
+    .pipe(
+      flatMap(() => this.getAllReviewsByMovieId(review.movieId))
+    ).toPromise();
+    
+  }
+
   getReviewsFromApplcationState() {
     return this.reviews$.asObservable();
   }

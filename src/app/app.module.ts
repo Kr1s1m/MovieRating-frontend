@@ -20,6 +20,7 @@ import { IndividualMoviesComponent } from './individual-movies/individual-movies
 import { BarRatingModule } from "ngx-bar-rating";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { TokenComponent } from './register/token.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { AccountPageComponent } from './account-page/account-page.component';
 
@@ -39,6 +40,7 @@ import { AccountPageComponent } from './account-page/account-page.component';
     IndividualMoviesComponent,
     LoginComponent,
     RegisterComponent,
+    TokenComponent,
     AccountPageComponent
   ],
   imports: [
