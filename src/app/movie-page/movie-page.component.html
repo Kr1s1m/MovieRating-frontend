@@ -15,6 +15,10 @@
         <app-individuals [individuals]="individuals"></app-individuals>
     </div>
 
+    <h1> Leave a review </h1>
+
+    <app-review-form (submitEmitter)="onReviewSubmit($event)"  [movieId]="id"></app-review-form>
+
     <h1> Reviews </h1>
 
     <div *ngIf="(reviews$ | async) as reviews">
@@ -25,10 +29,6 @@
             No reviews.
         </ng-template>
     </div>
-
-    <h1> Leave a review </h1>
-
-    <app-review-form (submitEmitter)="onReviewSubmit($event)"  [movieId]="id"></app-review-form>
 
 </div>
 

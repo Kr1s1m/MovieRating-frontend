@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountPageComponent } from './account-page/account-page.component';
 import { HomeComponent } from './home/home.component';
 import { IndividualPageComponent } from './individual-page/individual-page.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'movies/:id', component: MoviePageComponent },
   { path: 'individuals/:id', component: IndividualPageComponent },
+  { path: 'accounts/:id', component: AccountPageComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

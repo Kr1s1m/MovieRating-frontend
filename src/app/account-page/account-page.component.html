@@ -1,0 +1,29 @@
+<div *ngIf="(account$ | async) as account; else account_not_found">
+    <h1>
+        {{ account.username }} <br>
+    </h1>
+    <h3>
+        Member since: {{ account.dateCreated }}
+    </h3>
+
+
+    <div *ngIf="(reviews$ | async) as reviews">
+        <div *ngIf="reviews.length != 0; else no_reviews">
+            <mat-card class="review-card" *ngFor="let review of reviews">
+
+                <mat-card-title>{{review.title}}</mat-card-title>
+                <mat-card-subtitle>{{review.score}}</mat-card-subtitle>
+                <mat-card-content>{{review.body}}</mat-card-content>
+                <mat-card-footer>{{review.date}}</mat-card-footer>
+                
+            </mat-card>
+        </div>
+        <ng-template #no_reviews>
+            {{account.username}} hasn't left any reviews.
+        </ng-template>
+    </div>
+</div>
+
+<ng-template #account_not_found>
+    Account not found.
+</ng-template>

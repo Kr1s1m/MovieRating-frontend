@@ -1,32 +1,35 @@
-<form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)" ngNativeValidate>
+<div *ngIf="loggedIn; else not_logged_in">
+    <form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)" ngNativeValidate>
 
-    <mat-form-field class="review-title" appearance="fill">
-        <mat-label>Review Title</mat-label>
-        <input matInput name="title" ngModel required #title="ngModel">
-    </mat-form-field>
-
-    <div class="review-score">
-        <div class="card-heading">Star Rating (Optional)</div>
-        <div class="card-body">
-          <bar-rating name="score" ngModel #score="ngModel" [(rate)]="currentScore" [max]="10" [theme]="'stars'"></bar-rating>
-        </div>
-    </div>
-
-   <button type="button" class="clear-score-button" (click)="clearCurrentScore();">Don't leave rating</button>
+        <mat-form-field class="review-title" appearance="fill">
+            <mat-label>Review Title</mat-label>
+            <input matInput name="title" ngModel required #title="ngModel">
+        </mat-form-field>
     
-    <mat-form-field class="review-body" appearance="fill">
-        <mat-label>Leave a review</mat-label>
-        <textarea matInput  name="body" ngModel required #body="ngModel">
-        </textarea>
-    </mat-form-field>
+        <div class="review-score">
+            <div class="card-heading">Star Rating (Optional)</div>
+            <div class="card-body">
+              <bar-rating name="score" ngModel #score="ngModel" [(rate)]="currentScore" [max]="10" [theme]="'stars'"></bar-rating>
+            </div>
+        </div>
+    
+       <button type="button" class="clear-score-button" (click)="clearCurrentScore();">Don't leave rating</button>
+        
+        <mat-form-field class="review-body" appearance="fill">
+            <mat-label>Leave a review</mat-label>
+            <textarea matInput  name="body" ngModel required #body="ngModel">
+            </textarea>
+        </mat-form-field>
+    
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>
 
-    <mat-form-field class="review-reviewerName" appearance="fill">
-        <mat-label>Enter name (Optional)</mat-label>
-        <input matInput name="reviewerName" ngModel #reviewerName="ngModel">
-    </mat-form-field>
+<ng-template #not_logged_in>
+    You must be signed in to leave a review. <br>
+    <button type="button" routerLink="/login"> Sign in </button>
+</ng-template>
 
-    <button type="submit" class="submit-button">Submit</button>
-</form>
 
 
 

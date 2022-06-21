@@ -25,11 +25,17 @@ export class ReviewService {
     );
   }
 
-  createReview(review: Review) : Observable<any> {
+  getAllReviewsByAccountId(account_id: number) {
+    return this.httpClient.get<Review[]>(
+      environment.apiBackendPoint + '/api/v1/reviews/account-page/' + account_id)
+      .toPromise();
+  }
+
+  createReview(review: Review) {
     return this.httpClient.post<Review>(environment.apiBackendPoint + '/api/v1/reviews/', review, httpOptions)
     .pipe(
       flatMap(() => this.getAllReviewsByMovieId(review.movieId))
-    );
+    ).toPromise();
   }
 
   getReviewsFromApplcationState() {
