@@ -23,7 +23,7 @@
 
     <div *ngIf="(reviews$ | async) as reviews">
         <div *ngIf="reviews.length != 0; else no_reviews">
-            <app-reviews [reviews]="reviews"></app-reviews>
+            <app-reviews [reviews]="reviews" (deleteEmitter)="onReviewDelete($event)"></app-reviews>
         </div>
         <ng-template #no_reviews>
             No reviews.

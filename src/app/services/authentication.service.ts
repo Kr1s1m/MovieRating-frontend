@@ -41,5 +41,17 @@ export class AuthenticationService {
       httpOptions 
     );
   }
+
+  verifyToken(token : string): Observable<any> {
+    return this.httpClient.post(environment.apiBackendPoint + '/api/v1/authentication/token/verify', token, {
+    	  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
+    });
+  }
+
+  resendToken(token : string): Observable<any> {
+    return this.httpClient.post(environment.apiBackendPoint + '/api/v1/authentication/token/resend', token, {
+    	  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
+    });
+  }
   
 }
