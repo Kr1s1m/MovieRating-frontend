@@ -37,7 +37,7 @@ export class ReviewFormComponent implements OnInit {
     this.review = new Review(
       this.movieId,
       reviewForm.value.title,
-      reviewForm.value.reviewerName, 
+      reviewForm.value.reviewerName || "Anonymous", 
       reviewForm.value.score,
       reviewForm.value.body);
 
