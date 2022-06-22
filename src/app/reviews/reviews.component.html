@@ -1,6 +1,6 @@
 <mat-card class="review-card" *ngFor="let review of reviews">
     <mat-card-title>{{review.title}}</mat-card-title>
-    <mat-card-subtitle>{{review.score}}</mat-card-subtitle>
+    <mat-card-subtitle>{{review.score}}*</mat-card-subtitle>
     <a [routerLink]="['/accounts/', review.accountId]">{{review.reviewerUsername}}</a>
     <mat-card-content>{{review.body}}</mat-card-content>
     <mat-card-footer>{{review.date}}</mat-card-footer>
@@ -8,6 +8,6 @@
       <div *ngIf = "review">
         <app-vote [review]="review"> </app-vote>
       </div>
-      <button mat-button *ngIf="canDelete(review.accountId)" type="button" (click)="onDelete(review);">Delete</button>
+      <button *ngIf="canDelete(review.accountId)" type="button" (click)="onDelete(review);">Delete</button>
     </mat-card-actions>
 </mat-card>
