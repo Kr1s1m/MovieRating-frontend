@@ -19,6 +19,11 @@
 
     <app-review-form (submitEmitter)="onReviewSubmit($event)"  [movieId]="id"></app-review-form>
 
+    <div class="alert alert-danger" role="alert" *ngIf="reviewExists">
+        Cannot leave review: {{ errorMessageReview }}
+    </div>
+
+
     <h1> Reviews </h1>
 
     <div *ngIf="(reviews$ | async) as reviews">

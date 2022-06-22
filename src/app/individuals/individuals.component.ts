@@ -18,7 +18,7 @@ export class IndividualsComponent implements OnInit {
 
   ngOnInit(): void {
     this.groupedIndividuals = this.groupByStarType();
-    console.log(this.groupedIndividuals);
+    //console.log(this.groupedIndividuals);
   }
 
   groupByStarType() {

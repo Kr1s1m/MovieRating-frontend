@@ -4,5 +4,5 @@
     <a [routerLink]="['/accounts/', review.accountId]">{{review.reviewerUsername}}</a>
     <mat-card-content>{{review.body}}</mat-card-content>
     <mat-card-footer>{{review.date}}</mat-card-footer>
-    <button *ngIf="isAdminLogged" type="button" (click)="onDelete(review);">Delete</button>
+    <button *ngIf="canDelete(review.accountId)" type="button" (click)="onDelete(review);">Delete</button>
 </mat-card>
