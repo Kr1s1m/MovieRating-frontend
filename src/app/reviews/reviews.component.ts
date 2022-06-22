@@ -21,8 +21,7 @@ export class ReviewsComponent implements OnInit {
   @Output()
   deleteEmitter: EventEmitter<Review> = new EventEmitter();
 
-  constructor(private tokenStorageService: TokenStorageService,
-              private reviewService: ReviewService) { }
+  constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.roles = this.tokenStorageService.getAccount().roles;
@@ -32,7 +31,6 @@ export class ReviewsComponent implements OnInit {
       this.isAdminLogged = true;
     }
   }
-
   canDelete(accountId: number)
   {
     return this.isAdminLogged || (accountId == this.accountId);
@@ -41,5 +39,4 @@ export class ReviewsComponent implements OnInit {
   onDelete(review: Review) {
     this.deleteEmitter.emit(review);
   }
-
 }

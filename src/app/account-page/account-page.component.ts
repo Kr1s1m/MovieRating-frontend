@@ -19,6 +19,9 @@ export class AccountPageComponent implements OnInit, OnDestroy {
   //@ts-ignore
   reviews$: Promise<Review[] | undefined>;
 
+  //@ts-ignore
+  karma$: Promise<number | undefined>;
+
   constructor(private accountService: AccountService,
     private reviewService: ReviewService,
     private route: ActivatedRoute) { }
@@ -28,6 +31,7 @@ export class AccountPageComponent implements OnInit, OnDestroy {
 
     this.account$ = this.accountService.getAccountById(this.id);
     this.reviews$ = this.reviewService.getAllReviewsByAccountId(this.id);
+    this.karma$ = this.accountService.getKarmaByAccountId(this.id);
   }
 
   ngOnDestroy() {

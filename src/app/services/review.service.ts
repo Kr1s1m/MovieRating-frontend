@@ -43,10 +43,14 @@ export class ReviewService {
     .pipe(
       flatMap(() => this.getAllReviewsByMovieId(review.movieId))
     ).toPromise();
-    
+
   }
 
-  getReviewsFromApplcationState() {
+  getReviewsFromApplicationState() {
     return this.reviews$.asObservable();
+  }
+
+  getReviewById(id: number) {
+    return this.httpClient.get<Review>(environment.apiBackendPoint + '/api/v1/reviews/' + id);
   }
 }

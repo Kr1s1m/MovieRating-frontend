@@ -7,7 +7,11 @@ export class Review {
 
     accountId: number;
     reviewerUsername: string;
-    
+
+    upvoted: boolean;
+    downvoted: boolean;
+    voteBalance: number;
+
     title: string;
     score: number;
     body: string;
@@ -20,6 +24,10 @@ export class Review {
         this.movieId = movieId;
         this.movieTitle = "";
         this.movieYear = 0;
+
+        this.upvoted = false;
+        this.downvoted = false;
+        this.voteBalance = 0;
 
         this.accountId = accountId;
         this.reviewerUsername = reviewerUsername;

@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { TokenComponent } from './register/token.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { AccountPageComponent } from './account-page/account-page.component';
+import { VoteComponent } from './vote/vote.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
     LoginComponent,
     RegisterComponent,
     TokenComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
