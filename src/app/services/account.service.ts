@@ -15,4 +15,10 @@ export class AccountService {
     .get<Account>(environment.apiBackendPoint + '/api/v1/accounts/' + id)
     .toPromise();
   }
+
+  getKarmaByAccountId(id: number) {
+    return this.httpClient
+      .get<number>(environment.apiBackendPoint + '/api/v1/accounts/karma/' + id)
+      .toPromise();
+  }
 }

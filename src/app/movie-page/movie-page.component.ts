@@ -49,7 +49,7 @@ export class MoviePageComponent implements OnInit, OnDestroy {
   }
 
   async updateCreate($event: Review) {
-    
+
     await this.reviewService.createReview($event)
     .catch((err) => {
       this.errorMessageReview = err.error.message;
@@ -57,17 +57,17 @@ export class MoviePageComponent implements OnInit, OnDestroy {
     });
     await this.movieService.getMovieByIdAsPromise(this.id);
 
-    this.reviews$ = this.reviewService.getReviewsFromApplcationState();
-    this.movie$ = this.movieService.getMovieFromApplicationState(); 
+    this.reviews$ = this.reviewService.getReviewsFromApplicationState();
+    this.movie$ = this.movieService.getMovieFromApplicationState();
   }
 
   async updateDelete($event: Review) {
-    
+
     await this.reviewService.deleteReview($event);
     await this.movieService.getMovieByIdAsPromise(this.id);
 
-    this.reviews$ = this.reviewService.getReviewsFromApplcationState();
-    this.movie$ = this.movieService.getMovieFromApplicationState(); 
+    this.reviews$ = this.reviewService.getReviewsFromApplicationState();
+    this.movie$ = this.movieService.getMovieFromApplicationState();
   }
 
   onReviewSubmit($event: Review) {

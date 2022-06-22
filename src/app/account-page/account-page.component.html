@@ -6,6 +6,9 @@
         Member since: {{ account.dateCreated }}
     </h3>
 
+    <h3  *ngIf="(karma$ | async) as karma">
+        Account karma: {{ karma }}
+    </h3>
 
     <div *ngIf="(reviews$ | async) as reviews">
         <div *ngIf="reviews.length != 0; else no_reviews">
@@ -18,7 +21,7 @@
                 </a>
                 <mat-card-content>{{review.body}}</mat-card-content>
                 <mat-card-footer>{{review.date}}</mat-card-footer>
-                
+
             </mat-card>
         </div>
         <ng-template #no_reviews>

@@ -31,7 +31,6 @@ export class ReviewsComponent implements OnInit {
       this.isAdminLogged = true;
     }
   }
-
   canDelete(accountId: number)
   {
     return this.isAdminLogged || (accountId == this.accountId);
@@ -40,5 +39,4 @@ export class ReviewsComponent implements OnInit {
   onDelete(review: Review) {
     this.deleteEmitter.emit(review);
   }
-
 }
