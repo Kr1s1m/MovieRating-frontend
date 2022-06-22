@@ -29,6 +29,9 @@ export class MoviePageComponent implements OnInit, OnDestroy {
   // @ts-ignore
   individuals$: Promise<Individual[] | undefined>;
 
+  reviewExists = false;
+  errorMessageReview = '';
+  errorMessageVote = '';
 
   constructor(private movieService: MovieService,
               private reviewService: ReviewService,
@@ -47,7 +50,11 @@ export class MoviePageComponent implements OnInit, OnDestroy {
 
   async updateCreate($event: Review) {
     
-    await this.reviewService.createReview($event);
+    await this.reviewService.createReview($event)
+    .catch((err) => {
+      this.errorMessageReview = err.error.message;
+      this.reviewExists = true;
+    });
     await this.movieService.getMovieByIdAsPromise(this.id);
 
     this.reviews$ = this.reviewService.getReviewsFromApplcationState();

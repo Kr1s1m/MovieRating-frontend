@@ -14,7 +14,7 @@ export class ReviewsComponent implements OnInit {
   @Input()
   reviews: Review[] = [];
 
-  //@ts-ignore
+  accountId = -1;
   isAdminLogged = false;
   roles: string[] = [];
 
@@ -25,10 +25,16 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.roles = this.tokenStorageService.getAccount().roles;
+    this.accountId = this.tokenStorageService.getAccount().id;
     if(this.roles.includes('Admin'))
     {
       this.isAdminLogged = true;
     }
+  }
+
+  canDelete(accountId: number)
+  {
+    return this.isAdminLogged || (accountId == this.accountId);
   }
 
   onDelete(review: Review) {
