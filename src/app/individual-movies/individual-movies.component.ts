@@ -31,10 +31,10 @@ export class IndividualMoviesComponent implements OnInit {
         else
         {
           result[movie.id] = new Movie(
-            movie.id, movie.title, movie.year, movie.starType, movie.votes, movie.rating);
+            movie.id, movie.title, movie.year, movie.starType, movie.ratedCount, movie.rating);
         }
-        
-        return result; 
+
+        return result;
       }, Object.create(null)
     );
   }

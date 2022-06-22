@@ -21,8 +21,7 @@ export class ReviewsComponent implements OnInit {
   @Output()
   deleteEmitter: EventEmitter<Review> = new EventEmitter();
 
-  constructor(private tokenStorageService: TokenStorageService,
-              private reviewService: ReviewService) { }
+  constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.roles = this.tokenStorageService.getAccount().roles;
